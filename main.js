@@ -9,8 +9,10 @@ async function startButtonClicked() {
     const startContainer = document.getElementById("start-container");
     startContainer.remove();
 
-    // show question container
+    // show question container and set starting time
     showQuestionContainer();
+    let startTime = Date.now();
+    console.log(startTime);
 
     // set a Question and wait for the answer before setting a new question
     let questionQuantity = 20
@@ -24,10 +26,12 @@ async function startButtonClicked() {
 
     // after all questions hide the question container
     hideQuestionContainer();
+    let endTime = Date.now();
 
     // show results information
     let incorrectAnswers = questionQuantity - correctAnswers;
-    showResults(incorrectAnswers);
+    let timeElapsed = endTime - startTime;
+    showResults(incorrectAnswers,timeElapsed);
 
 }
 
@@ -42,14 +46,31 @@ function hideQuestionContainer() {
     questionContainer.remove();
 }
 
-function showResults(incorrectAnswers) {
+function showResults(incorrectAnswers,milliseconds) {
     const resultsTemplate = document.getElementById("results-template");
     const resultsClone = resultsTemplate.content.cloneNode(true);
     document.body.querySelector("main").append(resultsClone);
 
     const scoreText = document.getElementById("score").querySelector("p");
-    // scoreText.innerHTML = `<span style="color:red;">${incorrectAnswers}</span> incorrect answers`;
     scoreText.innerText = incorrectAnswers;
+
+    const timeText = document.getElementById("time").querySelector("p");
+    let formattedTime = formatTime(milliseconds);
+    timeText.innerText = `Completed in: ${formattedTime}`;
+}
+
+function formatTime(milliseconds) {
+    
+    function addZero(i) {
+        if (i < 10) {i = "0" + i}
+        return i;
+    }
+
+    let d = new Date();
+    d.setTime(milliseconds);
+    let m = addZero(d.getMinutes());
+    let s = addZero(d.getSeconds());
+    return m + ":" + s;
 }
 
 function askQuestion(questionNum) {
@@ -87,16 +108,25 @@ function askQuestion(questionNum) {
 
         const textBox = questionContainer.querySelector("input");
         const submitButton = questionContainer.querySelector("button");
-        submitButton.addEventListener("click",function() {
-            const result = checkAnswer(num1,num2,operator);
-            resolve(result);
-        });
-        textBox.addEventListener("keydown",function(event) {
-            if (event.key == "Enter") {
+
+        function submittedAnswer(event) {
+            // accept button submit or textbox enter events
+            if (event.type == "click" || event.type == "keydown" && event.key == "Enter") {
+                // return if the answer is correct
                 const result = checkAnswer(num1,num2,operator);
+
+                // remove event listeners to stop duplicate events existing simultaneiously
+                submitButton.removeEventListener("click",submittedAnswer);
+                textBox.removeEventListener("keydown",submittedAnswer);
+
+                // finally return the result
                 resolve(result);
             }
-        });
+        }
+
+        submitButton.addEventListener("click",submittedAnswer);
+        textBox.addEventListener("keydown",submittedAnswer);
+
     
         function checkAnswer(num1,num2,operator) {
             const textBox = questionContainer.querySelector("input");
@@ -105,12 +135,16 @@ function askQuestion(questionNum) {
     
             switch (operator) {
                 case "+":
+                    console.log(num1+num2,userAnswer,num1+num2 === userAnswer)
                     return num1+num2 === userAnswer;
                 case "-":
+                    console.log(num1-num2,userAnswer,num1-num2 === userAnswer)
                     return num1-num2 === userAnswer;
                 case "x":
+                    console.log(num1*num2,userAnswer,num1*num2 === userAnswer)
                     return num1*num2 === userAnswer;
                 case "÷":
+                    console.log(num1/num2,userAnswer,num1/num2 === userAnswer)
                     return num1/num2 === userAnswer;
             }
         }
