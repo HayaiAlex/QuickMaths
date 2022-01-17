@@ -9,21 +9,25 @@ async function startButtonClicked() {
     const startContainer = document.getElementById("start-container");
     startContainer.remove();
 
-    // game logic
+    // show question container
     showQuestionContainer();
 
     // set a Question and wait for the answer before setting a new question
     let questionQuantity = 20
     let correctAnswers = 0;
     for (let questionNum=1; questionNum <= questionQuantity; questionNum++) {
-        const questionPromise = askQuestion(questionNum);
-        questionPromise.then(result => { 
-            if (result === true) {
-                correctAnswers++;
-            }
-        });
+        const result = await askQuestion(questionNum);
+        if (result === true) {
+            correctAnswers++;
+        }
     }
 
+    // after all questions hide the question container
+    hideQuestionContainer();
+
+    // show results information
+    let incorrectAnswers = questionQuantity - correctAnswers;
+    showResults(incorrectAnswers);
 
 }
 
@@ -31,6 +35,21 @@ function showQuestionContainer() {
     const questionTemplate = document.getElementById("question-template");
     const questionClone = questionTemplate.content.cloneNode(true);
     document.body.querySelector("main").append(questionClone);
+}
+
+function hideQuestionContainer() {
+    const questionContainer = document.getElementById("question-container");
+    questionContainer.remove();
+}
+
+function showResults(incorrectAnswers) {
+    const resultsTemplate = document.getElementById("results-template");
+    const resultsClone = resultsTemplate.content.cloneNode(true);
+    document.body.querySelector("main").append(resultsClone);
+
+    const scoreText = document.getElementById("score").querySelector("p");
+    // scoreText.innerHTML = `<span style="color:red;">${incorrectAnswers}</span> incorrect answers`;
+    scoreText.innerText = incorrectAnswers;
 }
 
 function askQuestion(questionNum) {
@@ -66,17 +85,23 @@ function askQuestion(questionNum) {
     // Submit pressed, check answer
     return answerPromise = new Promise( resolve => {
 
+        const textBox = questionContainer.querySelector("input");
         const submitButton = questionContainer.querySelector("button");
         submitButton.addEventListener("click",function() {
             const result = checkAnswer(num1,num2,operator);
             resolve(result);
         });
+        textBox.addEventListener("keydown",function(event) {
+            if (event.key == "Enter") {
+                const result = checkAnswer(num1,num2,operator);
+                resolve(result);
+            }
+        });
     
         function checkAnswer(num1,num2,operator) {
-            console.log("Checking answer");
             const textBox = questionContainer.querySelector("input");
             const userAnswer = Number(textBox.value);
-            console.log(textBox.value);
+            textBox.value = "";
     
             switch (operator) {
                 case "+":
