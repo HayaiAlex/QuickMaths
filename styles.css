@@ -72,6 +72,45 @@ button {
   display: inline-block;
 }
 
+#answers-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.answer {
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+.answer .check, .answer .cross, .answer .question {
+  display: inline;
+}
+
+.check, .cross {
+  border-radius: 0.25rem;
+  margin-left: 0.25rem;
+  padding: 0 0.1rem;
+  color: white;
+}
+
+.check {
+  background-color: green;
+}
+
+.cross {
+  background-color: red;
+}
+
 footer {
   text-align: center;
 }

@@ -17,7 +17,7 @@
 
         <div id="start-container">
             <h3>Test your quick maths!</h3>
-            <p>Try to answer these 20 simply maths questions correctly in the shortest time possible.</p>
+            <p>Try to answer these 20 simple maths questions correctly in the shortest time possible.</p>
 
             <button id="start-button">Start!</button>
         </div>
@@ -31,21 +31,33 @@
             </div>
         </template>
 
+        <div id="results-container"></div>
         <template id="results-template">
-            <div id="results-container">
-                <h3>Results</h3>
+            <h3>Results</h3>
 
-                <div class="result-container" id="score">
-                    <h4>Your Score</h4>
-                    <p id="score-num"></p><p>incorrect answers</p>
-                </div>
-
-                <div class="result-container" id="time">
-                    <h4>Time</h4>
-                    <p>Completed in: 00:00</p>
-                </div>
+            <div class="result-container" id="score">
+                <h4>Your Score</h4>
+                <p id="score-num"></p><p>incorrect answers</p>
             </div>
+
+            <div class="result-container" id="time">
+                <h4>Time</h4>
+                <p>Average: 00:00</p>
+                <p>Completed in: 00:00</p>
+            </div>
+
+            <button id="show-answers">Show Answers</button>
         </template>
+
+        <div id="answers-container"></div>
+            <template id="answer-template">
+                <div class="answer">
+                    <h4>Question 1</h4>
+                    <p class="question">2 + 2 = 6</p><p class="check">✓</p><p class="cross">✗</p>
+                    <p class="description">Answer: 4</p>
+                    <p class="time">Time: 00:05</p>
+                </div>
+            </template>
 
     </main>
     
