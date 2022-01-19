@@ -7,11 +7,11 @@ themeButton.addEventListener("click",toggleTheme);
 let storage = window.localStorage;
 let themes = {
     light: {
-        img: "/images/sun.png",
+        img: "images/sun.png",
         sheet: "lightstyle.css"
     },
     dark: {
-        img: "/images/moon.png",
+        img: "images/moon.png",
         sheet: "darkstyle.css"
     }
 }
