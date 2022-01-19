@@ -38,6 +38,7 @@ async function startButtonClicked() {
 
     // after all questions hide the question container
     hideQuestionContainer();
+    hideKeypad();
     let endTime = Date.now();
 
     // show results information
@@ -70,6 +71,11 @@ function setupKeypad() {
             };
         });
     }
+}
+
+function hideKeypad() {
+    const keypadContainer = document.getElementById("keypad-container");
+    keypadContainer.style.display = "none";
 }
 
 function showQuestionContainer() {
