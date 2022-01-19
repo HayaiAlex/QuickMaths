@@ -137,6 +137,10 @@ button {
     margin: 0.5rem;
 }
 
+.answer p {
+    font-size: 1rem;
+}
+
 .answer .check, .answer .cross, .answer .question {
     display: inline;
 }
@@ -159,7 +163,7 @@ button {
 
 
 #keypad-container {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -199,11 +203,15 @@ button {
     flex-basis: 50%;
 }
 
-#key-enter, #key-backspace {
-    flex-basis: 24.5%;
+#key-enter {
+    flex-basis: 40%;
     background-color: $keypad-second-color;
 }
 
+#key-minus, #key-backspace {
+    flex-basis: 19%;
+    background-color: $keypad-second-color;
+}
 
 footer {
     text-align: center;

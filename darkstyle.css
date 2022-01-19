@@ -130,6 +130,10 @@ button {
   margin: 0.5rem;
 }
 
+.answer p {
+  font-size: 1rem;
+}
+
 .answer .check, .answer .cross, .answer .question {
   display: inline;
 }
@@ -150,7 +154,9 @@ button {
 }
 
 #keypad-container {
-  display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -202,9 +208,15 @@ button {
       flex-basis: 50%;
 }
 
-#key-enter, #key-backspace {
-  -ms-flex-preferred-size: 24.5%;
-      flex-basis: 24.5%;
+#key-enter {
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
+  background-color: rgba(241, 98, 98, 0.7);
+}
+
+#key-minus, #key-backspace {
+  -ms-flex-preferred-size: 19%;
+      flex-basis: 19%;
   background-color: rgba(241, 98, 98, 0.7);
 }
 

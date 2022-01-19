@@ -5,9 +5,15 @@
   font-size: 1.2rem;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  color: #000;
+}
+
+body {
+  background-color: #fff;
 }
 
 header h1 {
+  color: #0960d1;
   padding: 1rem 1rem 0.5rem 1rem;
 }
 
@@ -29,6 +35,8 @@ header h1 {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  -webkit-filter: invert(0%);
+          filter: invert(0%);
 }
 
 main {
@@ -40,10 +48,12 @@ main {
 }
 
 button {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(177, 218, 236, 0.1);
+  border: 1px solid #000;
   border-radius: 0.5rem;
   min-width: 4rem;
   min-height: 1.5rem;
+  color: #0960d1;
 }
 
 #question-container {
@@ -61,6 +71,7 @@ button {
   text-align: center;
   border-radius: 0.5rem;
   width: 10rem;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 #question-container button {
@@ -77,11 +88,12 @@ button {
 }
 
 .result-container {
-  border: 1px solid black;
+  border: 1px solid #000;
   border-radius: 0.5rem;
   width: 15rem;
   margin: 0.5rem auto;
   padding: 0.5rem;
+  background-color: rgba(177, 218, 236, 0.1);
 }
 
 #score-num {
@@ -111,10 +123,15 @@ button {
 }
 
 .answer {
-  border: 1px solid black;
+  background-color: rgba(177, 218, 236, 0.1);
+  border: 1px solid #000;
   border-radius: 0.5rem;
   padding: 0.5rem;
   margin: 0.5rem;
+}
+
+.answer p {
+  font-size: 1rem;
 }
 
 .answer .check, .answer .cross, .answer .question {
@@ -125,7 +142,7 @@ button {
   border-radius: 0.25rem;
   margin-left: 0.25rem;
   padding: 0 0.1rem;
-  color: white;
+  color: #000;
 }
 
 .check {
@@ -137,7 +154,9 @@ button {
 }
 
 #keypad-container {
-  display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -167,13 +186,14 @@ button {
   border-radius: 1rem;
   padding: 0.2rem;
   background-color: #489c48;
-  color: white;
+  color: #fff;
   width: 33%;
   padding-top: 33%;
   border: 0.2rem solid;
 }
 
 .key p {
+  color: #fff;
   font-size: 2rem;
   margin: 0;
   position: absolute;
@@ -188,9 +208,15 @@ button {
       flex-basis: 50%;
 }
 
-#key-enter, #key-backspace {
-  -ms-flex-preferred-size: 24.5%;
-      flex-basis: 24.5%;
+#key-enter {
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
+  background-color: #e9c54f;
+}
+
+#key-minus, #key-backspace {
+  -ms-flex-preferred-size: 19%;
+      flex-basis: 19%;
   background-color: #e9c54f;
 }
 
@@ -201,6 +227,6 @@ footer {
 footer p {
   padding: 0.3rem;
   font-size: 0.9rem;
-  color: #444;
+  color: #0960d1;
 }
 /*# sourceMappingURL=lightstyle.css.map */
