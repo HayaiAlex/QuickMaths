@@ -126,6 +126,7 @@ button {
   -ms-flex-line-pack: center;
       align-content: center;
   width: 90%;
+  max-width: 20rem;
   margin: 1rem auto;
 }
 

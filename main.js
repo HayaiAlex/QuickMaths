@@ -54,12 +54,21 @@ function setupKeypad() {
     const submitButton = document.getElementById("question-container").querySelector("button");
     submitButton.remove();
 
+    // Force hide keyboard from input textbox
+    const input = document.getElementById("answer-input");
+    input.readonly = "readonly";
+    input.disabled = true;
+    setTimeout(() => {
+        input.blur();
+        input.removeAttribute("readonly");
+        input.removeAttribute("disabled");
+    });
+
     // Setup keypad
     const keypadContainer = document.getElementById("keypad-container");
     keypadContainer.style.display = "flex";
 
     const keys = document.getElementsByClassName("key");
-    const input = document.getElementById("answer-input");
     for (let key=0;key<keys.length;key++) {
         keys[key].addEventListener("touchstart",() => {
             if (keys[key].id == "key-backspace") {
