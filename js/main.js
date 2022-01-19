@@ -3,8 +3,6 @@ const hasTouch = ('ontouchstart' in document.documentElement && navigator.userAg
 const startButton = document.getElementById("start-button");
 startButton.addEventListener("click",startButtonClicked);
 
-
-
 async function startButtonClicked() {
     console.log("Start");
 

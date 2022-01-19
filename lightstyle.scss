@@ -10,6 +10,25 @@ header h1 {
     padding: 1rem 1rem 0.5rem 1rem;
 }
 
+#theme-button {
+    position: absolute;
+    border-radius: 25%;
+    top: 0.5rem;
+    right: 1rem;
+    min-width: 0;
+    width: 2rem;
+    height: 2rem;
+}
+
+#theme-button img {
+    max-width: 100%;
+    padding: 0.2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 main {
     padding: 1rem;
 }
@@ -19,6 +38,7 @@ main {
 }
 
 button {
+    background-color: rgba(0, 0, 0, 0);
     border-radius: 0.5rem;
     min-width: 4rem;
     min-height: 1.5rem;
@@ -72,6 +92,10 @@ button {
     display: inline-block;
 }
 
+
+#show-answers {
+    padding: 0 0.5rem;
+}
 
 #answers-container {
     display: flex;
