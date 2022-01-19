@@ -73,6 +73,14 @@ function setupKeypad() {
                 input.value = input.value.substring(0,input.value.length-1)
             } else if (keys[key].id == "key-enter") {
                 // enter event handled inside askQuestion due to dependencies
+            } else if (keys[key].id == "key-minus") {
+                if (Number(input.value) < 0) {
+                    input.value = input.value.substring(1,input.value.length);
+                } else if (Number(input.value) > 0) {
+                    input.value = "-" + input.value;
+                } else {
+                    input.value = "-";
+                }
             } else {
                 input.value += keys[key].querySelector("p").innerText;
             };
