@@ -111,6 +111,63 @@ button {
   background-color: red;
 }
 
+#keypad-container {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  width: 90%;
+  margin: 1rem auto;
+}
+
+.keypad-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.key {
+  position: relative;
+  border-radius: 1rem;
+  padding: 0.2rem;
+  background-color: #489c48;
+  color: white;
+  width: 33%;
+  padding-top: 33%;
+  border: 0.2rem solid;
+}
+
+.key p {
+  font-size: 2rem;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+#key-0 {
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+}
+
+#key-enter, #key-backspace {
+  -ms-flex-preferred-size: 24.5%;
+      flex-basis: 24.5%;
+  background-color: #e9c54f;
+}
+
 footer {
   text-align: center;
 }

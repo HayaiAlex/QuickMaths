@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
     <title>Quick Maths!</title>
 </head>
 <body>
@@ -22,13 +23,12 @@
             <button id="start-button">Start!</button>
         </div>
 
+        <div id="question-container"></div>
         <template id="question-template">
-            <div id="question-container">
-                <h3>Question 1</h3>
-                <p>What is 5+5?</p>
-                <input type="text" name="answer-input" id="answer-input" autocomplete="off" autofocus>
-                <button>Submit!</button>
-            </div>
+            <h3>Question 1</h3>
+            <p>What is 5+5?</p>
+            <input type="text" name="answer-input" id="answer-input" autocomplete="off" autofocus>
+            <button>Submit!</button>
         </template>
 
         <div id="results-container"></div>
@@ -50,14 +50,67 @@
         </template>
 
         <div id="answers-container"></div>
-            <template id="answer-template">
-                <div class="answer">
-                    <h4>Question 1</h4>
-                    <p class="question">2 + 2 = 6</p><p class="check">✓</p><p class="cross">✗</p>
-                    <p class="description">Answer: 4</p>
-                    <p class="time">Time: 00:05</p>
+        <template id="answer-template">
+            <div class="answer">
+                <h4>Question 1</h4>
+                <p class="question">2 + 2 = 6</p><p class="check">✓</p><p class="cross">✗</p>
+                <p class="description">Answer: 4</p>
+                <p class="time">Time: 00:05</p>
+            </div>
+        </template>
+    
+        <div id="keypad-container">
+
+            <div class="keypad-row" id="keys-789">
+                <div class="key" id="key-7">
+                    <p>7</p>
                 </div>
-            </template>
+                <div class="key" id="key-8">
+                    <p>8</p>
+                </div>
+                <div class="key" id="key-9">
+                    <p>9</p>
+                </div>
+            </div>
+            
+            <div class="keypad-row" id="keys-456">
+                <div class="key" id="key-4">
+                    <p>4</p>
+                </div>
+                <div class="key" id="key-5">
+                    <p>5</p>
+                </div>
+                <div class="key" id="key-6">
+                    <p>6</p>
+                </div>
+            </div>
+            
+            <div class="keypad-row" id="keys-123">
+                <div class="key" id="key-1">
+                    <p>1</p>
+                </div>
+                <div class="key" id="key-2">
+                    <p>2</p>
+                </div>
+                <div class="key" id="key-3">
+                    <p>3</p>
+                </div>
+            </div>
+            
+            <div class="keypad-row" id="keys-b0e">
+                <div class="key" id="key-backspace">
+                    <p><</p>
+                </div>
+                <div class="key" id="key-0">
+                    <p>0</p>
+                </div>
+                <div class="key" id="key-enter">
+                    <p>></p>
+                </div>
+            </div>
+
+        </div>    
+
 
     </main>
     

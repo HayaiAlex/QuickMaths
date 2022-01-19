@@ -1,6 +1,9 @@
-const startButton = document.getElementById("start-button");
+const hasTouch = ('ontouchstart' in document.documentElement && navigator.userAgent.match(/Mobi/));
 
+const startButton = document.getElementById("start-button");
 startButton.addEventListener("click",startButtonClicked);
+
+
 
 async function startButtonClicked() {
     console.log("Start");
@@ -9,11 +12,17 @@ async function startButtonClicked() {
     const startContainer = document.getElementById("start-container");
     startContainer.remove();
 
+
     // show question container and set starting time
     showQuestionContainer();
+    
     let questionData = {};
     let startTime = Date.now();
-    console.log(startTime);
+    
+    // show keypad if touch supported
+    if (hasTouch) {
+        setupKeypad()
+    }
 
     // set a Question and wait for the answer before setting a new question
     let questionQuantity = 20
@@ -39,10 +48,35 @@ async function startButtonClicked() {
 
 }
 
+function setupKeypad() {
+    // Hide regular submit button
+    const submitButton = document.getElementById("question-container").querySelector("button");
+    submitButton.remove();
+
+    // Setup keypad
+    const keypadContainer = document.getElementById("keypad-container");
+    keypadContainer.style.display = "flex";
+
+    const keys = document.getElementsByClassName("key");
+    const input = document.getElementById("answer-input");
+    for (let key=0;key<keys.length;key++) {
+        keys[key].addEventListener("touchstart",() => {
+            if (keys[key].id == "key-backspace") {
+                input.value = input.value.substring(0,input.value.length-1)
+            } else if (keys[key].id == "key-enter") {
+                // enter event handled inside askQuestion due to dependencies
+            } else {
+                input.value += keys[key].querySelector("p").innerText;
+            };
+        });
+    }
+}
+
 function showQuestionContainer() {
     const questionTemplate = document.getElementById("question-template");
     const questionClone = questionTemplate.content.cloneNode(true);
-    document.body.querySelector("main").append(questionClone);
+    const questionContainer = document.getElementById("question-container");
+    questionContainer.append(questionClone);
 }
 
 function hideQuestionContainer() {
@@ -173,35 +207,45 @@ function askQuestion(questionNum) {
 
         const textBox = questionContainer.querySelector("input");
         const submitButton = questionContainer.querySelector("button");
+        const enterKey = document.getElementById("key-enter");
 
         function submittedAnswer(event) {
             // accept button submit or textbox enter events
-            if (event.type == "click" || event.type == "keydown" && event.key == "Enter") {
-                // return if the answer is correct
-                const result = checkAnswer(num1,num2,operator);
-                const timeElapsed = Date.now() - startTime;
+            if (event.type == "keydown" && event.key != "Enter") {return};
 
-                // remove event listeners to stop duplicate events existing simultaneiously
+            // return if the answer is correct
+            const result = checkAnswer(num1,num2,operator);
+            const timeElapsed = Date.now() - startTime;
+
+            // remove event listeners to stop duplicate events existing simultaneiously
+            if (hasTouch) {
+                enterKey.removeEventListener("touchstart",submittedAnswer);
+            } else {
                 submitButton.removeEventListener("click",submittedAnswer);
-                textBox.removeEventListener("keydown",submittedAnswer);
-
-
-                // finally return the results
-                let results = {
-                    questionNumber: questionNum,
-                    question: question.innerText,
-                    timeTaken: timeElapsed,
-                    correctAnswer: result.answer,
-                    givenAnswer: result.givenAnswer,
-                    correct: result.correct,
-                }
-                resolve(results);
             }
+            textBox.removeEventListener("keydown",submittedAnswer);
+
+
+            // finally return the results
+            let results = {
+                questionNumber: questionNum,
+                question: question.innerText,
+                timeTaken: timeElapsed,
+                correctAnswer: result.answer,
+                givenAnswer: result.givenAnswer,
+                correct: result.correct,
+            }
+            resolve(results);
         }
 
-        submitButton.addEventListener("click",submittedAnswer);
         textBox.addEventListener("keydown",submittedAnswer);
 
+        // add keypad event
+        if (hasTouch) {
+            enterKey.addEventListener("touchstart",submittedAnswer);
+        } else { // submit button is only there if not using keypad
+            submitButton.addEventListener("click",submittedAnswer);
+        }
     
         function checkAnswer(num1,num2,operator) {
             const textBox = questionContainer.querySelector("input");

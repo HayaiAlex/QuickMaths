@@ -109,6 +109,50 @@ button {
 
 
 
+#keypad-container {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;  
+    width: 90%;
+    margin: 1rem auto; 
+}
+
+.keypad-row {
+    display: flex;
+    width: 100%;
+}
+
+.key {
+    position: relative;
+    border-radius: 1rem;
+    padding: 0.2rem;
+    background-color: rgb(72, 156, 72);
+    color: white;
+    width: 33%;
+    padding-top: 33%;
+    border: 0.2rem solid;
+}
+
+.key p {
+    font-size: 2rem;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#key-0 {
+    flex-basis: 50%;
+}
+
+#key-enter, #key-backspace {
+    flex-basis: 24.5%;
+    background-color: rgb(233, 197, 79);
+}
+
 
 footer {
     text-align: center;
