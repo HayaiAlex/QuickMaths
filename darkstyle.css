@@ -154,7 +154,9 @@ button {
 }
 
 #keypad-container {
-  display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -216,6 +218,26 @@ button {
   -ms-flex-preferred-size: 19%;
       flex-basis: 19%;
   background-color: rgba(241, 98, 98, 0.7);
+}
+
+#key-minus #plus {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}
+
+#key-minus #slash {
+  position: absolute;
+  top: 33%;
+  left: 35%;
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+}
+
+#key-minus #minus {
+  position: absolute;
+  top: 63%;
+  left: 60%;
 }
 
 footer {

@@ -215,6 +215,25 @@ button {
     background-color: $keypad-second-color;
 }
 
+#key-minus #plus {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+}
+
+#key-minus #slash {
+    position: absolute;
+    top: 33%;
+    left: 35%;
+    transform: rotate(30deg);
+}
+
+#key-minus #minus {
+    position: absolute;
+    top: 63%;
+    left: 60%;
+}
+
 footer {
     text-align: center;
 }
