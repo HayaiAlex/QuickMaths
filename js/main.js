@@ -140,6 +140,14 @@ function showAnswers(questions) {
     const answers = document.getElementById("answers-container");
     const answerTemplate = document.getElementById("answer-template");
 
+    // if answers-container already contains answers, return
+    // if (answers.querySelector("div")) {
+    //     return
+    // }
+
+    const answerButton = document.getElementById("show-answers");
+    answerButton.remove()
+    
     const totalQuestions = Object.keys(questions).length;
     for (let i=1;i<=totalQuestions;i++) {
         const answer = answerTemplate.content.cloneNode(true);
