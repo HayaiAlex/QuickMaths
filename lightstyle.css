@@ -220,22 +220,14 @@ button {
 
 #key-minus #plus {
   position: absolute;
-  top: 40%;
-  left: 40%;
-}
-
-#key-minus #slash {
-  position: absolute;
-  top: 33%;
-  left: 35%;
-  -webkit-transform: rotate(30deg);
-          transform: rotate(30deg);
+  top: 42%;
+  left: 42%;
 }
 
 #key-minus #minus {
   position: absolute;
-  top: 63%;
-  left: 60%;
+  top: 60%;
+  left: 58%;
 }
 
 footer {
