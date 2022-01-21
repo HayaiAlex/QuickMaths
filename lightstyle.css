@@ -1,242 +1,240 @@
+:root {
+  --theme-image-filter: invert(0%);
+
+  --background-color: #fff;
+  --border-color: #000;
+  --font-color: #000;
+  --font-second-color: rgb(9, 96, 209);
+  --button-background-color: rgba(177, 218, 236, 0.1);
+
+  --text-box-background-color: rgba(255,255,255,0.2);
+
+  --keypad-font-color: #fff;
+  --keypad-main-color: rgb(72, 156, 72);
+  --keypad-second-color: rgb(233, 197, 79);
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.2rem;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  color: #000;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    box-sizing: border-box;
+    color: var(--font-color);
 }
 
 body {
-  background-color: #fff;
+    background-color: var(--background-color);
 }
 
 header h1 {
-  color: #0960d1;
-  padding: 1rem 1rem 0.5rem 1rem;
+    color: var(--font-second-color);
+    padding: 1rem 1rem 0.5rem 1rem;
 }
 
 #theme-button {
-  position: absolute;
-  border-radius: 25%;
-  top: 0.5rem;
-  right: 1rem;
-  min-width: 0;
-  width: 2rem;
-  height: 2rem;
+    position: absolute;
+    border-radius: 25%;
+    top: 0.5rem;
+    right: 1rem;
+    min-width: 0;
+    width: 2rem;
+    height: 2rem;
 }
 
 #theme-button img {
-  max-width: 100%;
-  padding: 0.2rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  -webkit-filter: invert(0%);
-          filter: invert(0%);
+    max-width: 100%;
+    padding: 0.2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: var(--theme-image-filter);
 }
 
 main {
-  padding: 1rem;
+    padding: 1rem;
 }
 
 #start-container p {
-  padding: 0.5rem 0;
+    padding: 0.5rem 0;
 }
 
 button {
-  background-color: rgba(177, 218, 236, 0.1);
-  border: 1px solid #000;
-  border-radius: 0.5rem;
-  min-width: 4rem;
-  min-height: 1.5rem;
-  color: #0960d1;
+    background-color: var(--button-background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    min-width: 4rem;
+    min-height: 1.5rem;
+    color: var(--font-second-color);
 }
 
 #question-container {
-  margin: auto;
-  text-align: center;
+    margin: auto;
+    text-align: center;
 }
 
 #question-container h3 {
-  padding: 0.1rem;
+    padding: 0.1rem;
 }
 
 #question-container input {
-  margin-top: 0.5rem;
-  padding: 0.4rem;
-  text-align: center;
-  border-radius: 0.5rem;
-  width: 10rem;
-  background-color: rgba(255, 255, 255, 0.2);
+    margin-top: 0.5rem;
+    padding: 0.4rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    width: 10rem;
+    background-color: var(--text-box-background-color);
 }
 
 #question-container button {
-  margin: auto;
-  margin-top: 0.5rem;
-  display: block;
-  border-radius: 0.5rem;
-  min-width: 5rem;
+    margin: auto;
+    margin-top: 0.5rem;
+    display: block;
+    border-radius: 0.5rem;
+    min-width: 5rem;
 }
 
+
 #results-container {
-  margin: auto;
-  text-align: center;
+    margin: auto;
+    text-align: center;
 }
 
 .result-container {
-  border: 1px solid #000;
-  border-radius: 0.5rem;
-  width: 15rem;
-  margin: 0.5rem auto;
-  padding: 0.5rem;
-  background-color: rgba(177, 218, 236, 0.1);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    width: 15rem;
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+    background-color: var(--button-background-color);
 }
 
 #score-num {
-  color: red;
-  margin-right: 0.4rem;
+    color: red;
+    margin-right: 0.4rem;
 }
 
 #score p {
-  display: inline-block;
+    display: inline-block;
 }
 
+
 #show-answers {
-  padding: 0 0.5rem;
+    padding: 0 0.5rem;
 }
 
 #answers-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin: auto;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: space-evenly;
+    text-align: center;
 }
 
 .answer {
-  background-color: rgba(177, 218, 236, 0.1);
-  border: 1px solid #000;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  margin: 0.25rem;
+    background-color: var(--button-background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin: 0.25rem;
 }
 
 .answer p {
-  font-size: 1rem;
+    font-size: 1rem;
 }
 
 .answer .check, .answer .cross, .answer .question {
-  display: inline;
+    display: inline;
 }
 
 .check, .cross {
-  border-radius: 0.25rem;
-  margin-left: 0.25rem;
-  padding: 0 0.1rem;
-  color: #000;
+    border-radius: 0.25rem;
+    margin-left: 0.25rem;
+    padding: 0 0.1rem;
+    color: var(--font-color);
 }
 
 .check {
-  background-color: green;
+    background-color: green;
 }
 
 .cross {
-  background-color: red;
+    background-color: red;
 }
 
+
+
 #keypad-container {
-  display: none;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  width: 90%;
-  max-width: 20rem;
-  margin: 1rem auto;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;  
+    width: 90%;
+    max-width: 20rem;
+    margin: 1rem auto; 
 }
 
 .keypad-row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
+    display: flex;
+    width: 100%;
 }
 
 .key {
-  position: relative;
-  border-radius: 1rem;
-  padding: 0.2rem;
-  background-color: #489c48;
-  color: #fff;
-  width: 33%;
-  padding-top: 33%;
-  border: 0.2rem solid;
+    position: relative;
+    border-radius: 1rem;
+    padding: 0.2rem;
+    background-color: var(--keypad-main-color);
+    color: var(--background-color);
+    width: 33%;
+    padding-top: 33%;
+    border: 0.2rem solid;
 }
 
 .key p {
-  color: #fff;
-  font-size: 2rem;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+    color: var(--keypad-font-color);
+    font-size: 2rem;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #key-0 {
-  -ms-flex-preferred-size: 50%;
-      flex-basis: 50%;
+    flex-basis: 50%;
 }
 
 #key-enter {
-  -ms-flex-preferred-size: 40%;
-      flex-basis: 40%;
-  background-color: #e9c54f;
+    flex-basis: 40%;
+    background-color: var(--keypad-second-color);
 }
 
 #key-minus, #key-backspace {
-  -ms-flex-preferred-size: 19%;
-      flex-basis: 19%;
-  background-color: #e9c54f;
+    flex-basis: 19%;
+    background-color: var(--keypad-second-color);
 }
 
 #key-minus #plus {
-  position: absolute;
-  top: 42%;
-  left: 42%;
+    position: absolute;
+    top: 42%;
+    left: 42%;
 }
 
+
 #key-minus #minus {
-  position: absolute;
-  top: 60%;
-  left: 58%;
+    position: absolute;
+    top: 60%;
+    left: 58%;
 }
 
 footer {
-  text-align: center;
+    text-align: center;
 }
 
 footer p {
-  padding: 0.3rem;
-  font-size: 0.9rem;
-  color: #0960d1;
+    padding: 0.3rem;
+    font-size: 0.9rem;
+    color: var(--font-second-color);
 }
-/*# sourceMappingURL=lightstyle.css.map */
